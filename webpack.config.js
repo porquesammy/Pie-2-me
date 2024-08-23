@@ -1,9 +1,9 @@
 const path = require("node:path"); //commonJS imports
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const historyApiFallback = require("connect-history-api-fallback");
+// const historyApiFallback = require("connect-history-api-fallback"); //single page apps
+const { type } = require("node:os");
 
 module.exports = {
-  //ES Modules
   mode: "development",
   entry: path.resolve(__dirname, "src/index.js"),
   output: {
@@ -12,8 +12,9 @@ module.exports = {
     clean: true, //delete old copy of js
     assetModuleFilename: "[name][ext]", //keep asset names the same
   },
-  devtool: "source-map",
+  devtool: "eval-source-map",
   devServer: {
+    watchFiles: ['./src/template.html'],
     static: {
       directory: path.resolve(__dirname, "dist"),
     },
@@ -30,7 +31,7 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(avif|png|svg|jpg|jpeg|gif)$/i,
         use: [
           {
             loader: 'file-loader',

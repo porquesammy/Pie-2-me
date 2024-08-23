@@ -1,3 +1,13 @@
+//* testing for accessability *//
+
+// :root {
+//   font-size: 16px;
+//   font-size: 32px;
+//   font-size: 40px;
+// }
+
+//* ------------------------*//
+
 ///** reset **///
 *,
 *::before,
@@ -16,16 +26,6 @@ body * {
   line-height: calc(2px + 2.6ex + 2px);
   -webkit-font-smoothing: antialiased;
 }
-
-//* testing for accessability *//
-
-// :root {
-//   font-size: 16px;
-//   font-size: 32px;
-//   font-size: 40px;
-// }
-
-//* ------------------------*//
 
 h1 {
   font-size: 1.5rem;
@@ -75,9 +75,9 @@ body {
   background-color: #c4d9ff;
 }
 
-////*************////
-///    Header   ////
-//**************\\\\
+/// *** *** *** *** *** *** ///
+///         Header
+/// *** *** *** ***  ***  ///
 .header-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -88,66 +88,105 @@ body {
   z-index: 5;
   grid-area: 1/1/-1/-1;
   justify-self: center;
-  align-self: center;
+  margin-top: 8px;
 }
 
-#header__sm-top-layer {
+#header__top-layer {
   grid-area: 1/1/-1/-1;
   z-index: 4;
   min-width: 100%;
   width: 100%;
 }
 
-#header__sm-middle-layer {
+#header__middle-layer {
   grid-area: 1/1/-1/-1;
   z-index: 3;
   width: 99%;
   justify-self: center;
 }
-#header__sm-bottom-layer {
+#header__bottom-layer {
   grid-area: 1/1/-1/-1;
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.1));
   z-index: 2;
   min-width: 100%;
   width: 100%;
 }
-////*** End Header ***////
 
+/// *** *** *** *** *** *** ///
+/// lrg screen svg  nav background
+/// *** *** *** ***  ***  ///
 
-////***************************////
-///    Bottom popup nav bar   ////
-//****************************\\\\
-#nav__sm-bottom-nav-popup {
-  position: fixed;
-  height: auto;
-  max-height: 75px;
-  bottom: 0;
-  z-index: 999;
+#header__nav-bar-background-lrg-screens {
+  grid-area: 1/1/-1/-1;
+  z-index: -5;
   width: 100vw;
-  box-shadow: -10px -05px 20px 50px rgba(0, 0, 0, 0.03),
-    10px -10px 20px 50px rgba(0, 0, 0, 0.03),
-    0px -5px 15px 70px rgba(0, 0, 0, 0.05);
-  border-radius: 15%;
-  display: none;
-  //  transition: all .3s;
+  height: 170px;
+  clip-path: url(#header__nav-bar-background-lrg-screens-clip-path);
 }
 
-#nav__sm-bottom-nav-popup img {
-  justify-self: stretch;
+#header__nav-bar-background-lrg-screens-clip-path {
+  height: 70px; //create space between content and header//
 }
-////*** End Bottom popup nav bar ***////
 
-////**************////
-///    content   ////
-//***************\\\\
+/// *** *** *** *** *** *** ///
+///      nav buttons
+/// *** *** *** ***  ***  ///
+
+#nav__bg-screen-top-nav-wrapper {
+  position: absolute;
+  top: 100px;
+  z-index: 99;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: baseline;
+  gap: 15vw;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-areas:
+    "button-icon"
+    "button-text";
+}
+
+button {
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  background: none;
+  font-family: sans-serif;
+  font-family: "Lilita One";
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: 0px 0px 1.1px #ffffff;
+
+  cursor: pointer;
+  text-align: center;
+  img {
+    grid-area: "button-icon";
+    // outline: auto;
+  }
+  span {
+    grid-area: "button-text";
+    // outline:auto;
+  }
+}
+
+
+/// *** *** *** *** *** *** ///
+///         Content
+/// *** *** *** ***  ***  ///
+#content {
+  max-width: 1500px;
+  margin-inline: auto;
+}
 .menuCard-grid {
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: calc(100vw - 32px);
-  place-content: center;
+  grid-template-columns: calc(100vw - 2rem);
+  justify-content: center;
   gap: 1rem;
   @media (min-width: 501px) {
-    margin-left: 2.5rem;
     .menuCard {
       max-width: 700px;
     }
@@ -155,40 +194,47 @@ body {
   @media (min-width: 907px) {
     gap: 1rem 2rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
     margin-inline: 1.5rem;
   }
 }
-////**** end content*****////
 
-////**************////
-/// favorites H1 ////
-//***************\\\\
+/// *** *** *** *** *** *** ///
+///         H1's
+/// *** *** *** ***  ***  ///
 h1 {
-  position: relative;
-  top: -0.5rem;
-  left: 1rem;
   width: min-content;
   padding-left: 10px;
   padding-right: 10px;
   background-color: #e1ecff;
   margin-bottom: 6px;
+  margin-left: 1rem;
+  font-family: "Kiwi Maru";
+  font-style: normal;
+  font-weight: 500;
 }
-@media (max-width: 610px) {
-  h1 {
-    top: -0.5rem;
+
+#favorites {
+  position: relative;
+  top: -0.5rem;
+  @media (max-width: 610px) {
+    #favorites {
+      top: -0.5rem;
+    }
   }
 }
-////**** end favorites H1 *****////
 
-////*************////
-///   Menu Card ////
-//**************\\\\
+/// *** *** *** *** *** *** ///
+///         Menu Card
+/// *** *** *** ***  ***  ///
 .menuCard {
   display: grid;
   gap: 1rem;
   max-width: 590px;
-  margin-bottom: 1rem;
+  margin-left: 1.15rem;
+  margin-bottom: 1.5rem;
+  @media (max-width: 500px) {
+    margin-left: 0;
+  }
 }
 
 ///* card picture container layout *///
@@ -207,13 +253,15 @@ h1 {
   grid-area: 1/1/-1/2;
   height: 195px;
   width: 160px;
-  background: #d9d9d9; //put image url here #D9D9D9;
-  box-shadow: inset 0px 0px 0px 4px #e1ecff; //stroke around picture
+  background: #d9d9d9;
+  box-shadow: 0px 0px 0px 5px #e1ecff; //stroke around picture
   border-radius: 16px;
   transform: matrix(1, -0.08, 0.12, 0.95, 0, 0);
+  background-size: cover;
   @media (max-width: 500px) {
     grid-area: 1/1/2/2;
     width: 70vw;
+    height: 240px;
   }
 }
 
@@ -244,7 +292,7 @@ h1 {
   font-family: "Kiwi Maru";
   font-style: normal;
   font-weight: 400;
-  font-size: .75rem;
+  font-size: 0.75rem;
   color: #000000;
   margin-bottom: 1rem;
 }
@@ -257,6 +305,57 @@ h1 {
   font-family: "Kiwi Maru";
   font-style: normal;
   font-weight: 500;
-  font-size: .80rem;
+  font-size: 0.8rem;
 }
-////**** end menu card *****////
+
+/// *** *** *** *** *** *** ///
+///     Appetizer Variant
+/// *** *** *** ***  ***  ///
+#appetizers-wrapper {
+  display: grid;
+  @media (min-width: 690px) {
+    grid-template-columns: auto auto;
+  }
+  @media (min-width: 1167px) {
+    grid-template-columns: auto auto auto;
+  }
+}
+.menuCard.appetizers {
+  max-width: none;
+  margin: 0;
+  margin-inline: 2rem;
+}
+.menuCard--text.appetizers {
+  width: fit-content;
+  max-width: max-content;
+  grid-template-areas:
+    "title price"
+    "description description";
+}
+
+.menuCard--text-menu-title.appetizers {
+  grid-area: title;
+  &.spicy::after {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #444444;
+    content: " 🌶️ " + "(spicy)";
+  }
+}
+
+.menuCard--text-menu-prices.appetizers {
+  grid-area: price;
+  justify-self: end;
+  display: block;
+  margin: 0;
+}
+.menuCard--text-menu-prices.appetizers:before {
+  color: rgb(59, 122, 26);
+  content: "///";
+}
+.menuCard--text-menu-prices.appetizers:nth-child(2) {
+  background-color: red;
+}
+.menuCard--text-menu-description.appetizers {
+  grid-area: description;
+}
